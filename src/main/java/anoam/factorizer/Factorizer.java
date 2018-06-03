@@ -9,7 +9,7 @@ public class Factorizer<T> {
     }
 
 
-    public Factorizer<T> stringAttribute(String attrName, String value) {
+    public Factorizer<T> attribute(String attrName, Object value) {
         return this;
     }
 

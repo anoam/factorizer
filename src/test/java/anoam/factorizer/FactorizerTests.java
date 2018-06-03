@@ -9,11 +9,11 @@ public class FactorizerTests {
     public void testFactorizerSimplestFactory() {
         Factorizer<FirstTestClass> factorizer = new Factorizer<>(FirstTestClass.class);
 
-        Factory<FirstTestClass> factory = factorizer.stringAttribute("firstAttribute", "foo").build();
+        Factory<FirstTestClass> factory = factorizer.attribute("firstAttribute", "foo").build();
 
         FirstTestClass entity = factory.build();
 
-        Assert.assertEquals(entity.getFirstAttribute(), "foo");
+        Assert.assertEquals("foo", entity.getFirstAttribute());
         Assert.assertNull(entity.getSecondAttribute());
     }
 
@@ -21,24 +21,24 @@ public class FactorizerTests {
     public void testFactorizerSimplestFactoryABitMoreComplex() {
         Factorizer<FirstTestClass> factorizer = new Factorizer<>(FirstTestClass.class);
 
-        Factory<FirstTestClass> factory = factorizer.stringAttribute("firstAttribute", "foo").stringAttribute("secondAttribute", "bar").build();
+        Factory<FirstTestClass> factory = factorizer.attribute("firstAttribute", "foo").attribute("secondAttribute", "bar").build();
 
 
         FirstTestClass entity = factory.build();
-        Assert.assertEquals(entity.getFirstAttribute(), "foo");
-        Assert.assertEquals(entity.getSecondAttribute(), "bar");
+        Assert.assertEquals("foo", entity.getFirstAttribute());
+        Assert.assertEquals("bar", entity.getSecondAttribute());
     }
 
     @Test
     public void testFactorizerSimplestFactoryCustomiztion() {
         Factorizer<FirstTestClass> factorizer = new Factorizer<>(FirstTestClass.class);
 
-        Factory<FirstTestClass> factory = factorizer.stringAttribute("firstAttribute", "foo").build();
+        Factory<FirstTestClass> factory = factorizer.attribute("firstAttribute", "foo").build();
 
         FirstTestClass entity = factory.customize().stringAttribute("firstAttribute", "bar").stringAttribute("secondAttribute", "baz").build();
 
-        Assert.assertEquals(entity.getFirstAttribute(), "bar");
-        Assert.assertEquals(entity.getSecondAttribute(), "baz");
+        Assert.assertEquals("bar", entity.getFirstAttribute());
+        Assert.assertEquals("baz", entity.getSecondAttribute());
 
     }
 }
