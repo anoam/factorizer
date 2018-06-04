@@ -2,7 +2,6 @@ package anoam.factorizer;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
 
 public class Factorizer<T> {
 
@@ -15,13 +14,13 @@ public class Factorizer<T> {
 
 
     public Factorizer<T> attribute(String attrName, Object value) {
-        attributes.add(AssignedAttribute.build(klass, attrName, value));
+        attributes.add(SimpleAssignedAttribute.build(klass, attrName, value));
 
         return this;
     }
 
-    public Factorizer<T> attribute(String attrName, Function<Integer, Object> converter) {
-
+    public Factorizer<T> attribute(String attrName, SequenceConverter converter) {
+        attributes.add(SequencedAssignedAttribute.build(klass, attrName, converter));
         return this;
     }
 
