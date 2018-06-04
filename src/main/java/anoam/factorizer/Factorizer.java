@@ -2,6 +2,7 @@ package anoam.factorizer;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 
 public class Factorizer<T> {
 
@@ -18,6 +19,12 @@ public class Factorizer<T> {
 
         return this;
     }
+
+    public Factorizer<T> attribute(String attrName, Function<Integer, Object> converter) {
+
+        return this;
+    }
+
 
     public Factory<T> build() {
         return new Factory<>(klass, attributes);
